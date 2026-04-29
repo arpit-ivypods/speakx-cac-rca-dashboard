@@ -350,7 +350,7 @@ export function Phase2() {
                     />
                     <Tooltip
                       cursor={{ fill: "rgba(215, 204, 177, 0.18)" }}
-                      formatter={(value: number | string, name) => {
+                      formatter={(value: any, name: any) => {
                         const num =
                           typeof value === "number"
                             ? value
@@ -470,7 +470,7 @@ export function Phase2() {
                     />
                     <Tooltip
                       cursor={{ stroke: COLORS.grid, strokeWidth: 1 }}
-                      formatter={(value: number | string, name) => {
+                      formatter={(value: any, name: any) => {
                         const num =
                           typeof value === "number"
                             ? value

@@ -202,7 +202,7 @@ function WaterfallChart({
                 position: "right",
                 fontSize: 11,
                 fill: COLORS.ink,
-                formatter: (value: number, _name?: string, _props?: unknown) => {
+                formatter: (value: any) => {
                   // value here is "post"; total is unknown context. Use payload via formatter alt below.
                   return `${value.toFixed(1)}%`;
                 },
