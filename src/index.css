@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-bg-base text-ink antialiased;
+    font-family: "Inter", system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background-image:
+      radial-gradient(1200px 600px at 90% -20%, rgba(197, 180, 227, 0.10), transparent 60%),
+      radial-gradient(1000px 500px at -10% 10%, rgba(157, 197, 232, 0.10), transparent 60%),
+      radial-gradient(1400px 700px at 50% 110%, rgba(159, 216, 182, 0.08), transparent 70%);
+  }
+
+  ::selection {
+    background: #C5B4E3;
+    color: #1F2937;
+  }
+
+  /* Subtle scrollbar */
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(181, 155, 106, 0.25);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(181, 155, 106, 0.45); background-clip: padding-box; border: 3px solid transparent; }
+}
+
+@layer components {
+  .display {
+    font-family: "Fraunces", Georgia, serif;
+    letter-spacing: -0.02em;
+    font-feature-settings: "ss01";
+  }
+
+  .card {
+    @apply bg-bg-surface border border-line rounded-2xl shadow-soft;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border;
+  }
+
+  .section-title {
+    @apply display text-3xl md:text-4xl text-ink leading-tight tracking-tight;
+  }
+
+  .section-eyebrow {
+    @apply uppercase tracking-[0.18em] text-[11px] font-semibold text-ink-mute;
+  }
+
+  .grid-paper {
+    background-image:
+      linear-gradient(to right, rgba(215, 204, 177, 0.18) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(215, 204, 177, 0.18) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .pastel-rose { background: linear-gradient(135deg, #FCE6E6 0%, #F4A6A6 100%); }
+  .pastel-mint { background: linear-gradient(135deg, #E2F4EA 0%, #9FD8B6 100%); }
+  .pastel-sky  { background: linear-gradient(135deg, #E2EEF8 0%, #9DC5E8 100%); }
+  .pastel-lav  { background: linear-gradient(135deg, #EDE7F7 0%, #C5B4E3 100%); }
+  .pastel-peach { background: linear-gradient(135deg, #FCEBD7 0%, #F8C896 100%); }
+  .pastel-sand { background: linear-gradient(135deg, #F6EFDF 0%, #E8DCC4 100%); }
+
+  .focus-ring:focus-visible {
+    @apply outline-none ring-2 ring-offset-2 ring-offset-bg-base ring-lav-deep/60;
+  }
+}
+
+/* Recharts polish */
+.recharts-cartesian-axis-tick-value tspan {
+  fill: #475569;
+  font-size: 11px;
+  font-family: "Inter", sans-serif;
+}
+.recharts-cartesian-grid line { stroke: rgba(215, 204, 177, 0.45); }
+.recharts-tooltip-wrapper:focus { outline: none; }
+.recharts-default-tooltip {
+  border-radius: 10px !important;
+  border: 1px solid #EAE3D2 !important;
+  box-shadow: 0 6px 24px rgba(31, 41, 55, 0.10) !important;
+  background: #fff !important;
+  font-family: "Inter", sans-serif;
+}
