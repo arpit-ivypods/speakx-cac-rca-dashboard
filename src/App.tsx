@@ -13,13 +13,16 @@ import { Recovery } from "@/components/sections/Recovery";
 import { Outcome } from "@/components/sections/Outcome";
 import { Footer } from "@/components/sections/Footer";
 import { Timeline } from "@/components/sections/Timeline";
+import { Validation } from "@/components/sections/Validation";
 
-export type View = "report" | "timeline";
+export type View = "report" | "timeline" | "validation";
 
 function readHash(): View {
   if (typeof window === "undefined") return "report";
   const h = window.location.hash.replace(/^#/, "").toLowerCase();
-  return h.startsWith("timeline") ? "timeline" : "report";
+  if (h.startsWith("timeline")) return "timeline";
+  if (h.startsWith("validation")) return "validation";
+  return "report";
 }
 
 export default function App() {
@@ -29,7 +32,9 @@ export default function App() {
     setViewState(v);
     if (v === "timeline") {
       window.location.hash = "timeline";
-    } else if (window.location.hash === "#timeline") {
+    } else if (v === "validation") {
+      window.location.hash = "validation";
+    } else if (window.location.hash === "#timeline" || window.location.hash === "#validation") {
       window.history.replaceState(null, "", window.location.pathname + window.location.search);
     }
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
@@ -47,7 +52,7 @@ export default function App() {
       {view === "report" && <SideNav />}
       <main>
         <AnimatePresence mode="wait">
-          {view === "report" ? (
+          {view === "report" && (
             <motion.div
               key="report"
               initial={{ opacity: 0, y: 8 }}
@@ -66,7 +71,8 @@ export default function App() {
               <Outcome />
               <Footer />
             </motion.div>
-          ) : (
+          )}
+          {view === "timeline" && (
             <motion.div
               key="timeline"
               initial={{ opacity: 0, y: 8 }}
@@ -75,6 +81,18 @@ export default function App() {
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               <Timeline />
+              <Footer />
+            </motion.div>
+          )}
+          {view === "validation" && (
+            <motion.div
+              key="validation"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Validation />
               <Footer />
             </motion.div>
           )}

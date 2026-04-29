@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, FileText, Globe2, GitCommitVertical } from "lucide-react";
+import { Calendar, FileText, Globe2, GitCommitVertical, ShieldCheck } from "lucide-react";
 import { reportMeta } from "@/data/cac";
 import type { View } from "@/App";
 import { cn } from "@/lib/utils";
@@ -35,8 +35,9 @@ export function TopBar({
 
         {/* Tab switcher */}
         <div className="relative flex items-center bg-bg-subtle/80 border border-line rounded-full p-1 shadow-soft">
-          <TabButton active={view === "report"}   onClick={() => onChange("report")}   icon={FileText}          label="Report" />
-          <TabButton active={view === "timeline"} onClick={() => onChange("timeline")} icon={GitCommitVertical} label="Timeline" />
+          <TabButton active={view === "report"}     onClick={() => onChange("report")}     icon={FileText}          label="Report" />
+          <TabButton active={view === "timeline"}   onClick={() => onChange("timeline")}   icon={GitCommitVertical} label="Timeline" />
+          <TabButton active={view === "validation"} onClick={() => onChange("validation")} icon={ShieldCheck}       label="Validation" />
         </div>
 
         <div className="hidden md:flex items-center gap-2 text-xs text-ink-soft">
